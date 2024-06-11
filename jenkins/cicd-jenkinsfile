@@ -10,11 +10,6 @@ pipeline {
         REGION = 'eu-west-1'
     }
     stages {
-          stage("Git Checkout") {
-            steps {
-                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/fatmaecemozer/SpringbootProject']])
-            }
-          }
           stage('Docker Build') {
             steps {
               sh '''
