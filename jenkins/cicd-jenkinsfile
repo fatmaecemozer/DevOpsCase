@@ -4,7 +4,7 @@ pipeline {
         TAG_VERSION = '1.0.0'
         REGISTRY_PATH = '381491906170.dkr.ecr.eu-west-1.amazonaws.com'
         ECR_REPO_FULL_NAME = '381491906170.dkr.ecr.eu-west-1.amazonaws.com/project-ecr-repo'
-        WAR_FULL_PATH = '/home/ec2-user/workspace/project-app/target/project-app.war'
+        JAR_FULL_PATH = '/home/ec2-user/workspace/devopscase/target/devopscase-0.0.1-SNAPSHOT.jar'
         TMP_IMAGE_NAME = 'project-app'
         ECR_REPO_NAME = 'project-ecr-repo'
         REGION = 'eu-west-1'
@@ -13,6 +13,7 @@ pipeline {
           stage('Docker Build') {
             steps {
               sh '''
+              cp ${JAR_FULL_PATH} .
               docker build -t ${TMP_IMAGE_NAME}:${TAG_VERSION} .
               '''
             }
